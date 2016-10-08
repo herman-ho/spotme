@@ -4,8 +4,8 @@ const app = express();
 const login = require('./controllers/login');
 const signup = require('./controllers/signup');
 const profile = require('./controllers/profile');
-const driver = require('./controllers/driver');
-const owner = require('./controllers/owner');
+const drivers = require('./controllers/drivers');
+const owners = require('./controllers/owners');
 
 // GET method route
 app.get('/', function (req, res) {
@@ -21,8 +21,8 @@ app.post('/', function (req, res) {
 app.use('/login', login);
 app.use('/signup', signup);
 app.use('/profile', profile);
-app.use('/driver', driver);
-app.use('/owner', owner);
+app.use('/drivers', drivers);
+app.use('/owners', owners);
 
 module.exports = app;
 app.listen(8000);

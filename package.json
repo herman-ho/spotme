@@ -1,26 +1,34 @@
 {
-    "name": "spotme",
-    "version": "1.0.0",
-    "description": "Parking for the 21st century",
-    "main": "app.js",
-    "scripts": {
-        "start": "node_modules/.bin/nodemon -L app.js",
-        "test": "echo \"Error: no test specified\" && exit 1"
+  "name": "spotme",
+  "version": "1.0.0",
+  "description": "Parking for the 21st century",
+  "main": "app.js",
+  "scripts": {
+    "start": "node_modules/.bin/nodemon -L app.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Herman Ho <contact.hermanho@gmail.com>",
+  "conributors": [
+    {
+      "name": "Muhammad Abdul-Qayyum",
+      "email": ""
     },
-    "author": "Herman Ho <contact.hermanho@gmail.com>",
-    "conributors": [{
-        "name": "Muhammad Abdul-Qayyum",
-        "email": ""
-    }, {
-        "name": "Joel Katako Anansambi",
-        "email": ""
-    }],
-    "license": "ISC",
-    "dependencies": {
-        "chai": "^3.5.0",
-        "chai-http": "^3.0.0",
-        "express": "^4.14.0",
-        "mocha": "^3.1.0",
-        "nodemon": "^1.10.2"
+    {
+      "name": "Joel Katako Anansambi",
+      "email": ""
     }
+  ],
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt-nodejs": "0.0.3",
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "express": "^4.14.0",
+    "express-handlebars": "^3.0.0",
+    "minimatch": "^3.0.3",
+    "mocha": "^3.1.0",
+    "nodemon": "^1.10.2",
+    "pg": "^6.1.0",
+    "sequelize": "^3.24.3"
+  }
 }
