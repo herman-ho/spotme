@@ -1,0 +1,9 @@
+{
+  "development": {
+    "username": "spotme",
+    "password": "spotme",
+    "database": "spotme",
+    "host": "localhost",
+    "dialect": "postgres"
+  }
+}

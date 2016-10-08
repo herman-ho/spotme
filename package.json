@@ -8,7 +8,7 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Herman Ho <contact.hermanho@gmail.com>",
-  "conributors": [
+  "contributors": [
     {
       "name": "Muhammad Abdul-Qayyum",
       "email": ""
@@ -29,6 +29,7 @@
     "mocha": "^3.1.0",
     "nodemon": "^1.10.2",
     "pg": "^6.1.0",
-    "sequelize": "^3.24.3"
+    "sequelize": "^3.24.3",
+    "sequelize-cli": "^2.4.0"
   }
 }

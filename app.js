@@ -1,11 +1,11 @@
-const express = require('express');
-const app = express();
+var express = require('express');
+var app = express();
 // Load and mount various controllers
-const login = require('./controllers/login');
-const signup = require('./controllers/signup');
-const profile = require('./controllers/profile');
-const drivers = require('./controllers/drivers');
-const owners = require('./controllers/owners');
+var login = require('./controllers/login');
+var signup = require('./controllers/signup');
+var profile = require('./controllers/profile');
+var drivers = require('./controllers/drivers');
+var owners = require('./controllers/owners');
 
 // GET method route
 app.get('/', function (req, res) {
