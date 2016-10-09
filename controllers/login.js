@@ -1,16 +1,25 @@
 var express = require('express');
-var router = express.Router();
+var passport = require('../middlewares/authentication');
+var Redirect = require('../middlewares/redirect');
 
-// middleware that is specific to this router (We did not cover this in class)
-// It applies to all routes defined in this controller
-router.use(function timeLog(req, res, next) {
-    console.log('Login Controller :: Time: ', Date.now());
-    next();
-});
+module.exports = {
+  registerRouter() {
+    var router = express.Router();
 
-// define the root login route
-router.get('/', function(req, res) {
-    res.send('Login page');
-});
+    router.get('/', Redirect.ifLoggedIn('/profile'), this.index);
+    router.post('/', this.login);
 
-module.exports = router;
+    return router;
+  },
+  index(req, res) {
+    res.render('login', { error: req.flash('error') });
+  },
+  login(req, res) {
+    passport.authenticate('local', {
+      successRedirect: '/profile',
+      failureRedirect: '/login',
+      failureFlash: true,
+      successFlash: true,
+    })(req, res);
+  },
+};

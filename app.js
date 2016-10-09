@@ -1,28 +1,35 @@
+var bodyParser = require('body-parser');
+var cookieParser = require('cookie-parser');
+var exphbs = require('express-handlebars');
 var express = require('express');
+var expressSession = require('express-session');
+var flash = require('connect-flash');
+var methodOverride = require('method-override');
+var models = require('./models/');
+var passport = require('./middlewares/authentication');
+var viewHelpers = require('./middlewares/viewHelpers');
+
 var app = express();
-// Load and mount various controllers
-var login = require('./controllers/login');
-var signup = require('./controllers/signup');
-var profile = require('./controllers/profile');
-var drivers = require('./controllers/drivers');
-var owners = require('./controllers/owners');
+app.use(methodOverride('_method'));
+app.use(cookieParser());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(expressSession(({ secret: 'nyancat', resave: false, saveUninitialized: true })));
+app.use(flash());
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(express.static('./public'));
 
-// GET method route
-app.get('/', function (req, res) {
-  res.send('GET request to the homepage');
-});
+app.engine('handlebars', exphbs({
+  layoutsDir: './views/layouts',
+  defaultLayout: 'main',
+}));
+app.set('view engine', 'handlebars');
+app.set('views', `${__dirname}/views/`);
 
-// POST method route
-app.post('/', function (req, res) {
-  res.send('POST request to the homepage');
-});
+app.use(viewHelpers.register());
 
-// Register various routes
-app.use('/login', login);
-app.use('/signup', signup);
-app.use('/profile', profile);
-app.use('/drivers', drivers);
-app.use('/owners', owners);
+app.use(require('./controllers/'));
 
 module.exports = app;
 app.listen(8000);

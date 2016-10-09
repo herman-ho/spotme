@@ -1,0 +1,92 @@
+.navbar-static-top {
+  margin-bottom: 19px;
+}
+
+.navbar-brand>img {
+   max-height: 150%;
+   height: 150%;
+   width: auto;
+   margin: -2px auto 0 auto;
+}
+
+.navbar-nav>li {
+  font-weight: bolder;
+}
+
+.bg {
+  height: 500px;
+  margin-top: -19px;
+  background-image: url('/img/jumbo-home.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  z-index: -1;
+}
+
+.jumbotron {
+  height: 500px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.form-btn {
+  font-size: 30px;
+  font-weight: bolder;
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin .form-signin-heading,
+.form-signin .checkbox {
+  margin-bottom: 10px;
+}
+
+.form-signin .checkbox {
+  font-weight: normal;
+}
+
+.form-signin .form-control {
+  position: relative;
+  height: auto;
+  -webkit-box-sizing: border-box;
+     -moz-box-sizing: border-box;
+          box-sizing: border-box;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-signin .form-control:focus {
+  z-index: 2;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: -1px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.footer {
+  margin-top: 20px;
+  padding: 15px 0;
+  color: #999;
+  text-align: center;
+  background-color: #f9f9f9;
+  border-top: 1px solid #e5e5e5;
+}
+.footer p:last-child {
+  margin-bottom: 0;
+}
+
+.text-white {
+  color: white;
+}
