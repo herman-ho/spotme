@@ -1,6 +1,6 @@
 const Sequelize = require('sequelize');
 
-module.exports = (Sequelize) => {
+module.exports = (sequelize) => {
     const Parkings = sequelize.define('parkings', {
         streetAddress: {
             type: Sequelize.TEXT,
