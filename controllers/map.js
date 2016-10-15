@@ -1,12 +1,12 @@
-const express = require('require');
+const express = require('express');
 
 module.exports = {
-    registerRouters() {
-        const router = express.Router().
+    registerRouter() {
+        const router = express.Router();
 
-        router.get('/', function(req, res) {
-            res.('maps');
-            
-        return map;
-    },
-};
+        return router;
+        },
+        index(req, res) {
+        res.render('map', { error: req.flash('error') });
+        },
+    };
