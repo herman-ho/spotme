@@ -1,22 +1,31 @@
 var express = require('express');
-var passport = require('../middlewares/authentication');
+var models = require('../models');
 var Redirect = require('../middlewares/redirect');
 
 module.exports = {
   registerRouter() {
     var router = express.Router();
 
+    router.get('/', Redirect.ifLoggedIn('/profile'), this.index);
+    router.post('/', this.submit);
+
     return router;
   },
   index(req, res) {
-    res.render('login', { error: req.flash('error') });
+    res.render('signup');
   },
-  login(req, res) {
-    passport.authenticate('local', {
-      successRedirect: '/profile',
-      failureRedirect: '/login',
-      failureFlash: true,
-      successFlash: true,
-    })(req, res);
+  submit(req, res) {
+    models.user.create({
+      nameFirst: req.body.nameFirst,
+      nameLast: req.body.nameLast,
+      email: req.body.email,
+      password: req.body.password,
+    }).then((user) => {
+      req.login(user, () =>
+        res.redirect('/profile')
+      );
+    }).catch(() => {
+      res.render('signup');
+    });
   },
 };

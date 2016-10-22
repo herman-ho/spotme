@@ -1,6 +1,7 @@
 var express = require('express');
 var fs = require('fs');
 var path = require('path');
+var Redirect = require('../middlewares/redirect');
 
 var router = express.Router();
 var basename = path.basename(module.filename);
@@ -13,7 +14,7 @@ fs
     router.use(`/${fileName}`, require(`./${fileName}`).registerRouter());
   });
 
-router.get('/', (req, res) => {
+router.get('/', Redirect.ifLoggedIn('/profile'), (req, res) => {
   res.render('homepage');
 });
 

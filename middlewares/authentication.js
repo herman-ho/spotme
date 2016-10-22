@@ -18,17 +18,17 @@ passport.use(new LocalStrategy({
       if (user == null || passwordsMatch(password, user.password) === false) {
         return done(null, false, { message: 'Incorrect email or password.' });
       }
-      return done(null, user, { message: 'Successfully Logged In!' });
+      return done(null, user);
     });
   })
 );
 
 passport.serializeUser((user, done) => {
-  done(null, user.user_id);
+  done(null, user.id);
 });
 
-passport.deserializeUser((user_id, done) => {
-  user.findById(user_id).then((user) => {
+passport.deserializeUser((id, done) => {
+  user.findById(id).then((user) => {
     if (user == null) {
       return done(null, false);
     }
