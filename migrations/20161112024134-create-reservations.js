@@ -9,16 +9,16 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       car_id: {
-        type: Sequelize.INT
+        type: Sequelize.INTEGER
       },
       space_id: {
-        type: Sequelize.INT
+        type: Sequelize.INTEGER
       },
       start: {
-        type: Sequelize.DATETIME
+        type: Sequelize.DATE
       },
       end: {
-        type: Sequelize.DATETIME
+        type: Sequelize.DATE
       },
       pricePerHalfHour: {
         type: Sequelize.NUMERIC
