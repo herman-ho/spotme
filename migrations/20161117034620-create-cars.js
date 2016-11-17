@@ -1,33 +1,36 @@
 'use strict';
 module.exports = {
   up: function(queryInterface, Sequelize) {
-    return queryInterface.createTable('reservations', {
+    return queryInterface.createTable('cars', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      car_id: {
+      owner: {
+        allowNull: false,
         type: Sequelize.INTEGER
       },
-      space_id: {
-        type: Sequelize.INTEGER
+      make: {
+        allowNull: false,
+        type: Sequelize.STRING
       },
-      start: {
-        type: Sequelize.DATE
+      model: {
+        allowNull: false,
+        type: Sequelize.STRING
       },
-      end: {
-        type: Sequelize.DATE
+      year: {
+        allowNull: false,
+        type: Sequelize.STRING
       },
-      pricePerHalfHour: {
-        type: Sequelize.NUMERIC
+      license: {
+        allowNull: false,
+        type: Sequelize.STRING
       },
-      createdAt: {
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        type: Sequelize.DATE
+      active: {
+        allowNull: false,
+        type: Sequelize.BOOLEAN
       },
       createdAt: {
         allowNull: false,
@@ -40,6 +43,6 @@ module.exports = {
     });
   },
   down: function(queryInterface, Sequelize) {
-    return queryInterface.dropTable('reservations');
+    return queryInterface.dropTable('cars');
   }
 };
