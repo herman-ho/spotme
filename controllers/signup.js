@@ -15,17 +15,22 @@ module.exports = {
     res.render('signup');
   },
   submit(req, res) {
-    models.user.create({
-      nameFirst: req.body.nameFirst,
-      nameLast: req.body.nameLast,
-      email: req.body.email,
-      password: req.body.password,
-    }).then((user) => {
-      req.login(user, () =>
-        res.redirect('/profile')
-      );
-    }).catch(() => {
-      res.render('signup');
-    });
+    if (req.body.password !== req.body.passwordRetype) {
+      req.flash('error', 'Passwords do not match.');
+      res.render('signup', { error: req.flash('error') });
+    } else {
+      models.user.create({
+        nameFirst: req.body.nameFirst,
+        nameLast: req.body.nameLast,
+        email: req.body.email,
+        password: req.body.password,
+      }).then((user) => {
+        req.login(user, () =>
+          res.redirect('/profile')
+        );
+      }).catch(() => {
+        res.render('signup');
+      });
+    }
   },
 };

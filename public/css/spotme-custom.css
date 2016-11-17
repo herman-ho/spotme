@@ -29,6 +29,12 @@
   background-color: rgba(0, 0, 0, 0.6);
 }
 
+.img-profile {
+  height: 100px;
+  max-width: 30%;
+  margin-top: 20px;
+}
+
 .form-btn {
   font-size: 30px;
   font-weight: bolder;
@@ -63,16 +69,20 @@
   z-index: 2;
 }
 
+.form-signin input[type="text"] {
+  margin-bottom: -1px;
+}
+
 .form-signin input[type="email"] {
   margin-bottom: -1px;
-  border-bottom-right-radius: 0;
-  border-bottom-left-radius: 0;
 }
 
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
-  border-top-left-radius: 0;
-  border-top-right-radius: 0;
+  margin-bottom: -1px;
+}
+
+.btn-submit {
+  margin-top: 20px;
 }
 
 .footer {

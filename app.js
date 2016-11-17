@@ -14,7 +14,7 @@ app.use(methodOverride('_method'));
 app.use(cookieParser());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(expressSession(({ secret: 'nyancat', resave: false, saveUninitialized: true })));
+app.use(expressSession(({ secret: 'nyancat', resave: false, saveUninitialized: true, cookie: { maxAge: 1000*60*60*24 } })));
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());

@@ -1,5 +1,8 @@
 <div class="container">
   <div class="row">
+    {{#each error}}
+      <div class="alert alert-danger">{{this}}</div>
+    {{/each}}
     <form class="form-signin" name="signup" action="/signup" method="post">
       <h2 class="form-signin-heading">Sign Up</h2>
       <label for="nameFirst" class="sr-only">First Name</label>
@@ -10,7 +13,9 @@
       <input type="email" name="email" class="form-control" placeholder="Email address" required data-validation-required-message="Please enter your email address.">
       <label for="password" class="sr-only">Password</label>
       <input type="password" name="password" class="form-control" placeholder="Password" required data-validation-required-message="Please enter your password.">
-      <button class="btn btn-lg btn-primary btn-block" type="submit">Sign Up</button>
+      <label for="passwordRetype" class="sr-only">Retype Password</label>
+      <input type="password" name="passwordRetype" class="form-control" placeholder="Retype Password" required data-validation-required-message="Please retype your password.">
+      <button class="btn btn-lg btn-primary btn-block btn-submit" type="submit">Sign Up</button>
     </form>
   </div>
 </div>
