@@ -8,11 +8,19 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      car_id: {
-        type: Sequelize.INTEGER
+      carId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'cars',
+          key: 'id'
+        }
       },
-      space_id: {
-        type: Sequelize.INTEGER
+      spaceId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'spaces',
+          key: 'id'
+        }
       },
       start: {
         type: Sequelize.DATE
@@ -22,12 +30,6 @@ module.exports = {
       },
       pricePerHalfHour: {
         type: Sequelize.NUMERIC
-      },
-      createdAt: {
-        type: Sequelize.DATE
-      },
-      updatedAt: {
-        type: Sequelize.DATE
       },
       createdAt: {
         allowNull: false,

@@ -1,0 +1,21 @@
+<div>
+    <h1>{{user.nameFirst}} {{user.nameLast}}</h1>
+</div>
+<div>
+
+    <h1>Listed Spaces: </h1>
+    {{#each space}}
+    <div class="space-preview">
+        <a href="/owners/listings/{{this.id}}">
+            <ul>
+                <li>
+                    <h3 class="post-title" style="display:inline-block;">
+                {{this.address1}}, {{this.address2}}, {{this.city}}, {{this.state}} {{this.zip}}
+                    </h3>
+                </li>
+            </ul>
+        </a>
+    </div>
+    <hr>
+    {{/each}}
+</div>

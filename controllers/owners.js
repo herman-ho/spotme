@@ -1,22 +1,129 @@
 var express = require('express');
+var models = require('../models');
 var passport = require('../middlewares/authentication');
 var Redirect = require('../middlewares/redirect');
 
 module.exports = {
   registerRouter() {
     var router = express.Router();
+    router.get('/', Redirect.ifNotLoggedIn('/login'), this.index);
+    router.get('/listings', Redirect.ifNotLoggedIn('/login'), this.listings);
+    router.post('/listings', Redirect.ifNotLoggedIn('/login'), this.create);
+    
+    router.get('/listings/new', Redirect.ifNotLoggedIn('/login'), this.new);
+    router.get('/listings/:id', Redirect.ifNotLoggedIn('/login'), this.show);
+    router.get('/:nameFirst', this.user);
+    router.get('/listings/:id/edit', Redirect.ifNotLoggedIn('/login'), this.edit);
+    router.put('/listings/:id', Redirect.ifNotLoggedIn('/login'), this.update);
+    router.delete('/listings/:id', Redirect.ifNotLoggedIn('/login'), this.delete);
 
     return router;
   },
   index(req, res) {
-    res.render('login', { error: req.flash('error') });
+    models.space.findAll().then((space) => {
+      models.user.findOne({
+        where: {
+          nameFirst: req.user.nameFirst,
+          nameLast: req.user.nameLast,
+        },
+      }).then((user) => {
+        res.render('owners', {
+          space,
+          user,
+        });
+    });
+    }).catch(() => {
+        res.render('owners');
+    });
   },
-  login(req, res) {
-    passport.authenticate('local', {
-      successRedirect: '/profile',
-      failureRedirect: '/login',
-      failureFlash: true,
-      successFlash: true,
-    })(req, res);
+  listings(req, res) {
+      res.render('owners/listings', { error: req.flash('error') });
+  },
+  new(req,res) {
+    res.render('owners/listings/new');
+  },
+  create(req, res) {
+    models.space.create({
+      address1: req.body.address1,
+      address2: req.body.address2,
+      city: req.body.city,
+      zip: req.body.zip,
+    }).then((space) => {
+      res.redirect('/owners');
+    }).catch(() => {
+      res.render('owners/listings/new');
+    });
+  },
+  show(req, res) {
+    models.space.findOne({
+      where: { id: req.params.id },
+    }).then((space) => {
+      models.user.findOne({
+        where: {
+          nameFirst: req.user.nameFirst,
+          nameLast: req.user.nameLast,
+        },
+      }).then((user) => {
+        res.render('owners/listings/single', {
+          space,
+          user,
+        });
+      });
+    }).catch(() => {
+        res.render('owners/listings/single');
+    });
+  },
+  user(req, res){
+     models.space.findAll().then((space) => {
+       models.user.findOne({
+         where: {
+          nameFirst: req.user.nameFirst,
+          nameLast: req.user.nameLast,
+         },
+      }).then((user) => {
+        res.render('owners/single', {
+          user,
+          space,
+        });
+      });
+    }).catch(() => {
+      res.render('owners/single');
+    });
+  },
+  edit(req,res) {
+    models.space.findOne({
+      where: {
+        id: req.params.id
+      },
+    }).then((space) => {
+      res.render('owners/listings/edit', { space });
+    }).catch(() => {
+      res.redirect('/owners');
+    });
+  },
+  update(req, res) {
+    models.space.update({
+      address1: req.body.address1,
+      address2: req.body.address2,
+      city: req.body.city,
+      state: req.body.state,
+      zip: req.body.zip,
+      userId: req.user.id
+    }, {
+      where: {
+        id: req.params.id,
+      },
+    }).then((space) => {
+      res.redirect('/owners');
+    });
+  },
+  delete(req, res) {
+    models.space.destroy({
+      where: {
+        id: req.params.id,
+      },
+    }).then(() => {
+      res.redirect('/owners');
+    });
   },
 };

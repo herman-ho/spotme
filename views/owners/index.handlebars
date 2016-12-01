@@ -1,0 +1,30 @@
+<div>
+    <h1>Owners' Page</h1>
+
+    {{#if cur_user}}
+          <a href="owners/listings" style="display:inline-block;"><h2>Click here to add a listings</h2></a>
+    {{/if}}
+    <hr>
+</div>
+<div>
+    <h2><u>Available Listings</u></h2><br>
+
+{{#each space}}
+  <div class="listings-preview">
+    <p><h4>Listing ID: {{this.id}}</h4></p>
+    <p>
+        <h3 style="display:inline-block">Location:</h3>
+        <a href="/owners/listings/{{this.id}}">
+            <h3 style="display:inline-block;">{{this.address1}}, {{this.address2}}, {{this.city}}, {{this.state}} {{this.zip}}</h3>
+        </a>
+    </p>
+    <hr>
+  </div>
+{{/each}}
+</div>
+<div style="text-align: center;">
+    <h4 style="display:inline-block;">Added by</h4> 
+    <h3 style="display:inline-block;">
+        <a href="/owners/{{user.nameFirst}}">{{user.nameFirst}} {{user.nameLast}}</a>
+    </h3>
+</div>

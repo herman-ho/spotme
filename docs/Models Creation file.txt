@@ -1,0 +1,4 @@
+CAR:          sequelize model:create --name car --attributes  userId:integer,make:string,model:string,year:string,license:string,active:boolean
+RESERVATION:  sequelize model:create --name reservation --attributes  carId:integer,spaceId:integer,start:date,end:date,pricePerHalfHour:numeric
+SPACE:        sequelize model:create --name space --attributes  userId:integer,address1:string,address2:string,city:string,state:string,zip:string,coordinates:geometry,instructions:string,pricePerHalfHour:numeric,active:boolean
+USER:         sequelize model:create --name user --attributes  nameLast:string,nameFirst:string,email:string,password:string

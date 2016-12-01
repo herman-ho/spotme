@@ -8,28 +8,26 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      owner: {
-        allowNull: false,
-        type: Sequelize.INTEGER
+      userId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'users',
+          key: 'id'
+        }
       },
       make: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       model: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       year: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       license: {
-        allowNull: false,
         type: Sequelize.STRING
       },
       active: {
-        allowNull: false,
         type: Sequelize.BOOLEAN
       },
       createdAt: {

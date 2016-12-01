@@ -1,7 +1,7 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
-  var cars = sequelize.define('cars', {
-    owner: DataTypes.INTEGER,
+  var Car = sequelize.define('car', {
+    userId: DataTypes.INTEGER,
     make: DataTypes.STRING,
     model: DataTypes.STRING,
     year: DataTypes.STRING,
@@ -11,8 +11,9 @@ module.exports = function(sequelize, DataTypes) {
     classMethods: {
       associate: function(models) {
         // associations can be defined here
+        models.car.belongsTo(models.user);
       }
     }
   });
-  return cars;
+  return Car;
 };

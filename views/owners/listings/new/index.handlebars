@@ -1,0 +1,22 @@
+<h1>/Owners/Listings/New</h1>
+<div class="container">
+  <div class="row">
+    <form action="/owners/listings" method="post">
+      <h2>Enter your Address</h2>
+      <label>Address 1</label>
+      <input type="text" name="address1" class="form-control" placeholder="address1" required data-validation-required-message="Please enter your address." autofocus>
+      <label>Address 2</label>
+      <input type="text" name="address2" class="form-control" placeholder="address2" required data-validation-required-message="Please enter your apatrment number.">
+      <label>City</label>
+      <input type="text" name="city" class="form-control" placeholder="city" required data-validation-required-message="Please enter your city."><br>
+      State: 
+      <select>
+        <option value="ny">NY</option>
+        <option value="ma">MA</option>
+      </select><br><br>
+      <label>Zip Code</label>
+      <input type="text" name="zip" class="form-control" placeholder="zip" required data-validation-required-message="Please enter your zip code.">
+      <button class="btn btn-lg btn-primary btn-block" type="submit">Add Listing</button>
+    </form>
+  </div>
+</div>
