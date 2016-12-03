@@ -19,7 +19,7 @@ module.exports = {
       req.flash('error', 'Passwords do not match.');
       res.render('signup', { error: req.flash('error') });
     } else {
-      models.User.create({
+      models.user.create({
         nameFirst: req.body.nameFirst,
         nameLast: req.body.nameLast,
         email: req.body.email,
