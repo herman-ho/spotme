@@ -3,13 +3,12 @@
     <div class="col-xs-12">
       <h1 class="text-center">My Listings</h1>
       {{#each space}}
-        <div class="listings-preview">
-          <h4>Listing ID: {{this.id}}</h4>
-            <a href="/owners/listings/{{this.id}}">
-                <h3 style="display:inline-block;">{{this.address1}} {{this.address2}} {{this.city}}, {{this.state}} {{this.zip}}</h3>
-            </a>
-          <hr>
-        </div>
+        <h4>Listing ID: {{this.id}}</h4>
+        <a href="/owners/listings/{{this.id}}/edit">
+          <h3>{{this.address1}} {{this.address2}} {{this.city}}, {{this.state}} {{this.zip}}</h3>
+        </a>
+        <h6>Updated on: {{this.updatedAt}}</h6>
+        <hr>
       {{/each}}
     </div>
   </div>
