@@ -11,9 +11,6 @@ module.exports = function(sequelize, DataTypes) {
     address2: {
       type: DataTypes.STRING,
       allowNull: true,
-      validate: {
-        notEmpty: false,
-      },
     },
     city: {
       type: DataTypes.STRING,
