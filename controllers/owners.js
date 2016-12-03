@@ -9,7 +9,7 @@ module.exports = {
     router.get('/', Redirect.ifNotLoggedIn('/login'), this.index);
     router.get('/listings', Redirect.ifNotLoggedIn('/login'), this.listings);
     router.post('/listings', Redirect.ifNotLoggedIn('/login'), this.create);
-    
+
     router.get('/listings/new', Redirect.ifNotLoggedIn('/login'), this.new);
     router.get('/listings/:id', Redirect.ifNotLoggedIn('/login'), this.show);
     router.get('/:nameFirst', this.user);
@@ -47,6 +47,7 @@ module.exports = {
       address1: req.body.address1,
       address2: req.body.address2,
       city: req.body.city,
+      state: req.body.state,
       zip: req.body.zip,
     }).then((space) => {
       res.redirect('/owners');

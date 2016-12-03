@@ -24,9 +24,9 @@ module.exports = function(sequelize, DataTypes) {
     },
     state: {
       type: DataTypes.STRING,
-      allowNull:true,
+      allowNull:false,
       validate: {
-        notEmpty: false,
+        notEmpty: true,
         len: {
           args: 2,
           msg: "Please enter the two letters for the state",
