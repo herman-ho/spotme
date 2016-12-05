@@ -112,19 +112,26 @@ module.exports = {
     });
   },
   update(req, res) {
-    models.space.update({
-      address1: req.body.address1,
-      address2: req.body.address2,
-      city: req.body.city,
-      state: req.body.state,
-      zip: req.body.zip,
-      userId: req.user.id
-    }, {
-      where: {
-        id: req.params.id,
-      },
-    }).then((space) => {
-      res.redirect('/owners');
+    geocoder.geocode(
+      req.body.address1 + ' ' + req.body.city + ' ' + req.body.state + ' ' + req.body.zip
+    ).then((point) => {
+      models.space.update({
+        address1: req.body.address1,
+        address2: req.body.address2,
+        city: req.body.city,
+        state: req.body.state,
+        zip: req.body.zip,
+        coordinates: {
+          type: 'Point',
+          coordinates: point,
+        },
+      }, {
+        where: {
+          id: req.params.id,
+        },
+      }).then((space) => {
+        res.redirect('/owners');
+      });
     });
   },
   delete(req, res) {
