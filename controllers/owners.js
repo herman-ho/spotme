@@ -20,18 +20,14 @@ module.exports = {
     return router;
   },
   index(req, res) {
-    models.space.findAll().then((space) => {
-      models.user.findOne({
-        where: {
-          nameFirst: req.user.nameFirst,
-          nameLast: req.user.nameLast,
-        },
-      }).then((user) => {
+    models.space.findAll({
+      where: {
+        userId: req.user.id
+      },
+    }).then((space) => {
         res.render('owners', {
           space,
-          user,
         });
-    });
     }).catch(() => {
         res.render('owners');
     });
@@ -44,6 +40,7 @@ module.exports = {
   },
   create(req, res) {
     models.space.create({
+      userId: req.user.id,
       address1: req.body.address1,
       address2: req.body.address2,
       city: req.body.city,
@@ -57,7 +54,9 @@ module.exports = {
   },
   show(req, res) {
     models.space.findOne({
-      where: { id: req.params.id },
+      where: {
+        id: req.params.id,
+      },
     }).then((space) => {
       models.user.findOne({
         where: {
@@ -94,7 +93,8 @@ module.exports = {
   edit(req,res) {
     models.space.findOne({
       where: {
-        id: req.params.id
+        userId: req.user.id,
+        id: req.param.id,
       },
     }).then((space) => {
       res.render('owners/listings/edit', { space });
