@@ -2,6 +2,7 @@ var express = require('express');
 var models = require('../models');
 var passport = require('../middlewares/authentication');
 var Redirect = require('../middlewares/redirect');
+var geocoder = require('../middlewares/geocoder');
 
 module.exports = {
   registerRouter() {
@@ -39,17 +40,25 @@ module.exports = {
     res.render('owners/listings/new');
   },
   create(req, res) {
-    models.space.create({
-      userId: req.user.id,
-      address1: req.body.address1,
-      address2: req.body.address2,
-      city: req.body.city,
-      state: req.body.state,
-      zip: req.body.zip,
-    }).then((space) => {
-      res.redirect('/owners');
-    }).catch(() => {
-      res.render('owners/listings/new');
+    geocoder.geocode(
+      req.body.address1 + ' ' + req.body.city + ' ' + req.body.state + ' ' + req.body.zip
+    ).then((point) => {
+      models.space.create({
+        userId: req.user.id,
+        address1: req.body.address1,
+        address2: req.body.address2,
+        city: req.body.city,
+        state: req.body.state,
+        zip: req.body.zip,
+        coordinates: {
+          type: 'Point',
+          coordinates: point,
+        },
+      }).then((space) => {
+        res.redirect('/owners');
+      }).catch(() => {
+        res.render('owners/listings/new');
+      });
     });
   },
   show(req, res) {
@@ -94,7 +103,7 @@ module.exports = {
     models.space.findOne({
       where: {
         userId: req.user.id,
-        id: req.param.id,
+        id: req.params.id,
       },
     }).then((space) => {
       res.render('owners/listings/edit', { space });

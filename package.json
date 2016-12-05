@@ -32,6 +32,7 @@
     "method-override": "^2.3.6",
     "minimatch": "^3.0.3",
     "mocha": "^3.1.0",
+    "node-geocoder": "^3.15.1",
     "nodemon": "^1.10.2",
     "passport": "^0.3.2",
     "passport-local": "^1.0.0",
