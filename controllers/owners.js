@@ -1,8 +1,7 @@
 var express = require('express');
 var models = require('../models');
-var passport = require('../middlewares/authentication');
 var Redirect = require('../middlewares/redirect');
-var geocoder = require('../middlewares/geocoder');
+var locationUtils = require('../middlewares/locationUtils');
 
 module.exports = {
   registerRouter() {
@@ -40,8 +39,8 @@ module.exports = {
     res.render('owners/listings/new');
   },
   create(req, res) {
-    geocoder.geocode(
-      req.body.address1 + ' ' + req.body.city + ' ' + req.body.state + ' ' + req.body.zip
+    locationUtils.geocode(
+      req.body.address1 + ', ' + req.body.city + ', ' + req.body.state + ' ' + req.body.zip
     ).then((point) => {
       models.space.create({
         userId: req.user.id,
@@ -114,8 +113,8 @@ module.exports = {
     });
   },
   update(req, res) {
-    geocoder.geocode(
-      req.body.address1 + ' ' + req.body.city + ' ' + req.body.state + ' ' + req.body.zip
+    locationUtils.geocode(
+      req.body.address1 + ', ' + req.body.city + ', ' + req.body.state + ' ' + req.body.zip
     ).then((point) => {
       models.space.update({
         address1: req.body.address1,

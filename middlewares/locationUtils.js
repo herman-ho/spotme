@@ -1,14 +1,15 @@
 const NodeGeocoder = require('node-geocoder');
-const geocoder = {}
+const models = require('../models');
+const locationUtils = {}
 
 var options = {
   provider: 'google',
-  apiKey: '', // add google maps geocode api key here
+  apiKey: '', // add google maps api key here
 }
 
 var gc = NodeGeocoder(options);
 
-geocoder.geocode = (addr) =>
+locationUtils.geocode = (addr) =>
   gc.geocode(addr)
     .then(function(res) {
       return ([res[0].longitude, res[0].latitude]);
@@ -17,4 +18,4 @@ geocoder.geocode = (addr) =>
       console.log(err);
     });
 
-module.exports = geocoder;
+module.exports = locationUtils;
