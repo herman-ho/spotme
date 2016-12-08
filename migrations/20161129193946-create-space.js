@@ -37,7 +37,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       pricePerHalfHour: {
-        type: Sequelize.NUMERIC
+        type: Sequelize.DECIMAL(11, 4).UNSIGNED
       },
       active: {
         type: Sequelize.BOOLEAN

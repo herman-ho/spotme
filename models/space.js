@@ -41,7 +41,7 @@ module.exports = function(sequelize, DataTypes) {
     },
     coordinates: DataTypes.GEOMETRY,
     instructions: DataTypes.STRING,
-    pricePerHalfHour: DataTypes.NUMERIC,
+    pricePerHalfHour: DataTypes.DECIMAL(11,4),
     active: DataTypes.BOOLEAN
   }, {
     classMethods: {
