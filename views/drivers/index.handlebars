@@ -5,7 +5,7 @@
       <form action="/drivers" method="post">
         <label>Destination Address</label>
         <div class="input-group">
-          <input type="text" name="destination" id="destination" class="form-control" placeholder="destination" autofocus>
+          <input type="text" name="destination" id="destination" class="form-control" placeholder="destination" autofocus required>
           <input type="hidden" name="latitude" id="latitude" class="form-control" value="">
           <input type="hidden" name="longitude" id="longitude" class="form-control" value="">
           <span class="input-group-btn">
@@ -21,7 +21,6 @@
 </div>
 
 <script>
-
   function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(setCoordinates);
@@ -32,6 +31,7 @@
     document.getElementById("latitude").value =  position.coords.latitude;
     document.getElementById("longitude").value =  position.coords.longitude;
     $("#destination").attr('disabled',true);
+    $("#destination").attr('required',false);
     $("#destination").attr('placeholder','Coordinates found: ' + position.coords.latitude + ', ' + position.coords.longitude);
   }
 </script>
