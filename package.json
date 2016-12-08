@@ -4,7 +4,7 @@
   "description": "Parking for the 21st century",
   "main": "app.js",
   "scripts": {
-    "start": "npm install && node_modules/.bin/nodemon -L app.js",
+    "start": "node_modules/.bin/nodemon -L app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Herman Ho <contact.hermanho@gmail.com>",

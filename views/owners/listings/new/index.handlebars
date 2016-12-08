@@ -13,6 +13,10 @@
         <input type="text" name="state" class="form-control" placeholder="state" required data-validation-required-message="Please enter your state.">
         <label>Zip Code</label>
         <input type="text" name="zip" class="form-control" placeholder="zip" required data-validation-required-message="Please enter your zip code.">
+        <label>Price (USD per half hour)</label>
+        <input type="number" min="0" step="0.01" name="pricePerHalfHour" class="form-control" placeholder="price" required data-validation-required-message="Please enter your price.">
+        <label>Special Instructions</label>
+        <input type="text" name="instructions" class="form-control" placeholder="instructions">
         <div class="form-group col-xs-4 col-xs-offset-4">
           <button class="btn btn-lg btn-primary btn-block btn-submit" type="submit">Submit</button>
         </div>

@@ -50,6 +50,8 @@ module.exports = {
         city: req.body.city,
         state: req.body.state,
         zip: req.body.zip,
+        pricePerHalfHour: req.body.pricePerHalfHour,
+        instructions: req.body.instructions,
         coordinates: {
           type: 'Point',
           coordinates: point,
@@ -121,6 +123,8 @@ module.exports = {
         city: req.body.city,
         state: req.body.state,
         zip: req.body.zip,
+        pricePerHalfHour: req.body.pricePerHalfHour,
+        instructions: req.body.instructions,
         coordinates: {
           type: 'Point',
           coordinates: point,
