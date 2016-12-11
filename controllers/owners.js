@@ -70,17 +70,7 @@ module.exports = {
         id: req.params.id,
       },
     }).then((space) => {
-      models.user.findOne({
-        where: {
-          nameFirst: req.user.nameFirst,
-          nameLast: req.user.nameLast,
-        },
-      }).then((user) => {
-        res.render('owners/listings/single', {
-          space,
-          user,
-        });
-      });
+      res.render('owners/listings/single', { space });
     }).catch(() => {
         res.render('owners/listings/single');
     });

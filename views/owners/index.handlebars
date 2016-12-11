@@ -2,17 +2,27 @@
   <div class="row">
     <div class="col-xs-12">
       <h1 class="text-center">My Listings</h1>
-      {{#each space}}
-        <h4>Listing ID: {{this.id}}</h4>
-        <a href="/owners/listings/{{this.id}}/edit">
-          <h3>{{this.address1}} {{this.address2}} {{this.city}}, {{this.state}} {{this.zip}}</h3>
-        </a>
-        <h6>Updated on: {{this.updatedAt}}</h6>
-        <hr>
-      {{/each}}
     </div>
   </div>
 </div>
+
+{{#each space}}
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-sm-6 col-lg-8">
+      <h4>Listing ID: {{this.id}}</h4>
+      <a href="/owners/listings/{{this.id}}/edit">
+        <h3>{{this.address1}} {{this.address2}} {{this.city}}, {{this.state}} {{this.zip}}</h3>
+      </a>
+      <h6>Updated on: {{this.updatedAt}}</h6>
+    </div>
+    <div class="col-xs-6 col-lg-4">
+      <img src="https://maps.googleapis.com/maps/api/streetview?&key=&size=250x250&location={{this.address1}},%20{{this.city}},%20{{this.state}},%20{{this.zip}}" />
+    </div>
+  </div>
+  <hr>
+</div>
+{{/each}}
 
 <div class="container">
   <div class="row">
