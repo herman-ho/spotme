@@ -15,6 +15,41 @@ module.exports = {
     res.render('drivers');
   },
   displaySpots(req, res) {
-    res.send(req.body.latitude + ' ' +req.body.longitude);
+    if ((!req.body.latitude || !req.body.longitude) && req.body.destination) {
+      locationUtils.geocode(
+        req.body.destination
+      ).then((point) => {
+        if (point.length > 1) {
+          locationUtils.getInRadius(
+            point[1], point[0], 0.5
+          ).then((spaces) => {
+            if (spaces.length > 0) {
+              res.send(spaces);
+            } else {
+              req.flash('error', 'No spaces found.');
+              res.render('drivers', { error: req.flash('error') });
+            }
+          }).catch(() => {
+            res.render('drivers');
+          });
+        } else {
+          req.flash('error', 'Destination not found.');
+          res.render('drivers', { error: req.flash('error') });
+        }
+      });
+    } else {
+      locationUtils.getInRadius(
+        req.body.latitude, req.body.longitude, 0.5
+      ).then((spaces) => {
+        if (spaces.length > 0) {
+          res.send(spaces);
+        } else {
+          req.flash('error', 'No spaces found.');
+          res.render('drivers', { error: req.flash('error') });
+        }
+      }).catch(() => {
+        res.render('drivers');
+      });
+    }
   },
 };
