@@ -8,7 +8,9 @@ module.exports = function(sequelize, DataTypes) {
         notEmpty: true,
       },
     },
-    address2: DataTypes.STRING,
+    address2: {
+      type: DataTypes.STRING,
+    },
     city: {
       type: DataTypes.STRING,
       allowNull: false,
@@ -39,10 +41,18 @@ module.exports = function(sequelize, DataTypes) {
         },
       },
     },
-    coordinates: DataTypes.GEOMETRY,
-    instructions: DataTypes.STRING,
-    pricePerHalfHour: DataTypes.DECIMAL(11,4),
-    active: DataTypes.BOOLEAN
+    coordinates: {
+      type: DataTypes.GEOGRAPHY('POINT',4326),
+    },
+    instructions: {
+      type: DataTypes.STRING,
+    },
+    pricePerHalfHour: {
+      type: DataTypes.DECIMAL(11,4),
+    },
+    active: {
+      type: DataTypes.BOOLEAN
+    },
   }, {
     classMethods: {
       associate: function(models) {

@@ -31,7 +31,7 @@ module.exports = {
         type: Sequelize.STRING
       },
       coordinates: {
-        type: Sequelize.GEOMETRY
+        type: Sequelize.GEOGRAPHY('POINT',4326)
       },
       instructions: {
         type: Sequelize.STRING
