@@ -30,8 +30,14 @@ module.exports = {
       zip: {
         type: Sequelize.STRING
       },
-      coordinates: {
+      coordinatePoint: {
         type: Sequelize.GEOGRAPHY('POINT',4326)
+      },
+      latitude: {
+        type: Sequelize.STRING
+      },
+      longitude: {
+        type: Sequelize.STRING
       },
       instructions: {
         type: Sequelize.STRING

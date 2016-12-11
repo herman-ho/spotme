@@ -41,8 +41,14 @@ module.exports = function(sequelize, DataTypes) {
         },
       },
     },
-    coordinates: {
+    coordinatePoint: {
       type: DataTypes.GEOGRAPHY('POINT',4326),
+    },
+    latitude: {
+      type: DataTypes.STRING,
+    },
+    longitude: {
+      type: DataTypes.STRING,
     },
     instructions: {
       type: DataTypes.STRING,

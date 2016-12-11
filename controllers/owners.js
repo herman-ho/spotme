@@ -51,10 +51,12 @@ module.exports = {
         zip: req.body.zip,
         pricePerHalfHour: req.body.pricePerHalfHour,
         instructions: req.body.instructions,
-        coordinates: {
+        coordinatePoint: {
           type: 'Point',
           coordinates: point,
         },
+        latitude: point[1],
+        longitude: point[0],
       }).then((space) => {
         res.redirect('/owners');
       }).catch(() => {
@@ -124,10 +126,12 @@ module.exports = {
         zip: req.body.zip,
         pricePerHalfHour: req.body.pricePerHalfHour,
         instructions: req.body.instructions,
-        coordinates: {
+        coordinatePoint: {
           type: 'Point',
           coordinates: point,
         },
+        latitude: point[1],
+        longitude: point[0],
       }, {
         where: {
           id: req.params.id,
