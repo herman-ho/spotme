@@ -35,6 +35,6 @@
     document.getElementById("longitude").value =  position.coords.longitude;
     $("#destination").attr('disabled',true);
     $("#destination").attr('required',false);
-    $("#destination").attr('placeholder','Coordinates found: ' + position.coords.latitude + ', ' + position.coords.longitude);
+    $("#destination").val('Coordinates found: ' + position.coords.latitude + ', ' + position.coords.longitude);
   }
 </script>

@@ -54,7 +54,7 @@ module.exports = function(sequelize, DataTypes) {
       type: DataTypes.STRING,
     },
     pricePerHalfHour: {
-      type: DataTypes.DECIMAL(11,4),
+      type: DataTypes.DECIMAL(9,2),
     },
     active: {
       type: DataTypes.BOOLEAN
