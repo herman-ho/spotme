@@ -33,7 +33,7 @@
   function setCoordinates(position) {
     document.getElementById("latitude").value =  position.coords.latitude;
     document.getElementById("longitude").value =  position.coords.longitude;
-    $("#destination").attr('disabled',true);
+    $("#destination").attr('readonly',true);
     $("#destination").attr('required',false);
     $("#destination").val('Coordinates found: ' + position.coords.latitude + ', ' + position.coords.longitude);
   }

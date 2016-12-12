@@ -72,6 +72,20 @@ module.exports = {
     });
   },
   reserve(req, res) {
-
+    models.reservation.create({
+      driverId: req.user.id,
+      carId: null,
+      ownerId: req.body.ownerId,
+      spaceId: req.body.spaceId,
+      startDate: req.body.startDate,
+      endDate: req.body.endDate,
+      startTime: req.body.startTime,
+      endTime: req.body.endTime,
+      pricePerHalfHour: req.body.pricePerHalfHour,
+    }).then((reservation) => {
+      res.redirect('/drivers');
+    }).catch(() => {
+      res.redirect('/drivers');
+    });
   },
 };
