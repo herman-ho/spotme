@@ -1,57 +1,54 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12">
-      <h1 class="text-center">Reservations as Driver</h1>
+      <h1 class="text-center">Reservations</h1>
     </div>
   </div>
 </div>
 
-{{#each driverRes}}
 <div class="container">
   <div class="row">
-    <div class="col-xs-12 col-sm-6 col-lg-8">
-      <h4>Reservation ID: {{this.id}}</h4>
-      <a href="/drivers/available-spaces/{{this.id}}/confirm-reservation">
-        <h4>{{this.address}}</h4>
-        <h5>Start Date: {{this.startDate}} {{this.startTime}}</h5>
-        <h5>End Date: {{this.endDate}} {{this.endTime}}</h5>
-        <h5>Price per half hour: <strong>${{this.pricePerHalfHour}}</strong></h5>
-        <h5>Special Instructions: {{this.instructions}}</h5>
-      </a>
+    <div class="col-sm-6">
+      <h2 class="text-center">As Driver</h2>
+      {{#each driverRes}}
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 text-left">
+            <h4>Reservation ID: {{this.id}}</h4>
+            <a href="/drivers/available-spaces/{{this.id}}/confirm-reservation">
+              <h4>{{this.address}}</h4>
+              <h5>Start Date: {{this.startDate}} {{this.startTime}}</h5>
+              <h5>End Date: {{this.endDate}} {{this.endTime}}</h5>
+              <h5>Price per half hour: <strong>${{this.pricePerHalfHour}}</strong></h5>
+              <h5>Special Instructions: {{this.instructions}}</h5>
+            </a>
+          </div>
+          <div class="col-xs-6 col-sm-6 text-right">
+            <img src="https://maps.googleapis.com/maps/api/streetview?&size=200x200&location={{this.address}}&key={{> api-key-streetview}}" />
+          </div>
+        </div>
+        <hr>
+      {{/each}}
     </div>
-    <div class="col-xs-6 col-lg-4 text-right">
-      <img src="https://maps.googleapis.com/maps/api/streetview?&size=200x200&location={{this.address}}&key={{> api-key-streetview}}" />
+    <div class="col-sm-6">
+      <h2 class="text-center">As Owner</h2>
+      {{#each ownerRes}}
+        <div class="row">
+          <div class="col-xs-6 col-sm-6 text-left">
+            <h4>Reservation ID: {{this.id}}</h4>
+            <a href="/drivers/available-spaces/{{this.id}}/confirm-reservation">
+              <h4>{{this.address}}</h4>
+              <h5>Start Date: {{this.startDate}} {{this.startTime}}</h5>
+              <h5>End Date: {{this.endDate}} {{this.endTime}}</h5>
+              <h5>Price per half hour: <strong>${{this.pricePerHalfHour}}</strong></h5>
+              <h5>Special Instructions: {{this.instructions}}</h5>
+            </a>
+          </div>
+          <div class="col-xs-6 col-sm-6 text-right">
+            <img src="https://maps.googleapis.com/maps/api/streetview?&size=200x200&location={{this.address}}&key={{> api-key-streetview}}" />
+          </div>
+        </div>
+        <hr>
+      {{/each}}
     </div>
   </div>
-  <hr>
 </div>
-{{/each}}
-
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12">
-      <h1 class="text-center">Reservations as Owner</h1>
-    </div>
-  </div>
-</div>
-
-{{#each ownerRes}}
-<div class="container">
-  <div class="row">
-    <div class="col-xs-12 col-sm-6 col-lg-8">
-      <h4>Reservation ID: {{this.id}}</h4>
-      <a href="/drivers/available-spaces/{{this.id}}/confirm-reservation">
-        <h4>{{this.address}}</h4>
-        <h5>Start Date: {{this.startDate}} {{this.startTime}}</h5>
-        <h5>End Date: {{this.endDate}} {{this.endTime}}</h5>
-        <h5>Price per half hour: <strong>${{this.pricePerHalfHour}}</strong></h5>
-        <h5>Special Instructions: {{this.instructions}}</h5>
-      </a>
-    </div>
-    <div class="col-xs-6 col-lg-4 text-right">
-      <img src="https://maps.googleapis.com/maps/api/streetview?&size=200x200&location={{this.address}}&key={{> api-key-streetview}}" />
-    </div>
-  </div>
-  <hr>
-</div>
-{{/each}}
