@@ -1,4 +1,5 @@
 var express = require('express');
+var models = require('../models');
 var Redirect = require('../middlewares/redirect');
 var locationUtils = require('../middlewares/locationUtils');
 
@@ -7,8 +8,10 @@ module.exports = {
     var router = express.Router();
 
     router.get('/', Redirect.ifNotLoggedIn(), this.index);
-    router.get('/available-spaces', Redirect.ifNotLoggedIn(), Redirect.ifLoggedIn('/drivers'), this.displaySpots);
+    router.get('/available-spaces', Redirect.ifNotLoggedIn(), Redirect.ifLoggedIn('/drivers'));
     router.post('/available-spaces', Redirect.ifNotLoggedIn(), this.displaySpots);
+    router.get('/available-spaces/reserve', Redirect.ifNotLoggedIn(), Redirect.ifLoggedIn('/drivers'));
+    router.post('/available-spaces/reserve', Redirect.ifNotLoggedIn(), this.reserve);
 
     return router;
   },
@@ -52,5 +55,8 @@ module.exports = {
         res.redirect('/drivers');
       });
     }
+  },
+  reserve(req, res) {
+    res.send("hello");
   },
 };

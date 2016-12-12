@@ -7,9 +7,17 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <title>SpotMe -- Parking Made Easy</title>
-    <link href="/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css">
-    <link href="/css/spotme-custom.css" rel="stylesheet" type="text/css">
-    <link href="/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/vendor/timepicker/css/jquery.timepicker.css" />
+    <link rel="stylesheet" type="text/css" href="/vendor/datepicker/css/bootstrap-datepicker.min.css" />
+    <link rel="stylesheet" type="text/css" href="/vendor/font-awesome/css/font-awesome.min.css" />
+    <link rel="stylesheet" type="text/css" href="/vendor/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/spotme-custom.css" />
+    <!-- moving to here to load first - hacky solution to loading time problem on template -->
+    <script type="text/javascript" src="/vendor/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="/vendor/timepicker/js/jquery.timepicker.min.js"></script>
+    <script type="text/javascript" src="/vendor/datepicker/js/bootstrap-datepicker.min.js"></script>
+    <script type="text/javascript" src="/vendor/datepair/js/datepair.js"></script>
+    <script type="text/javascript" src="/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
@@ -47,9 +55,7 @@
 
     {{{body}}}
 
-    <script src="/vendor/jquery/jquery.min.js"></script>
-    <script src="/vendor/bootstrap/js/bootstrap.min.js"></script>
-    <script src="/js/jqBootstrapValidation.js"></script>
+    <script type="text/javascript" src="/js/jqBootstrapValidation.js"></script>
   {{#if cur_user}}
     <script>
       ;(function() {
