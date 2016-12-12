@@ -1,10 +1,14 @@
 module.exports = function(sequelize, DataTypes) {
   var Reservation = sequelize.define('reservation', {
+    driverId: DataTypes.INTEGER,
     carId: DataTypes.INTEGER,
+    ownerId: DataTypes.INTEGER,
     spaceId: DataTypes.INTEGER,
-    start: DataTypes.DATE,
-    end: DataTypes.DATE,
-    pricePerHalfHour: DataTypes.NUMERIC
+    startDate: DataTypes.DATEONLY,
+    endDate: DataTypes.DATEONLY,
+    startTime: DataTypes.TIME,
+    endTime: DataTypes.TIME,
+    pricePerHalfHour: DataTypes.DECIMAL(9,2)
   }, {
     classMethods: {
       associate: function(models) {

@@ -8,10 +8,24 @@ module.exports = {
         primaryKey: true,
         type: Sequelize.INTEGER
       },
+      driverId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'users',
+          key: 'id'
+        }
+      },
       carId: {
         type: Sequelize.INTEGER,
         references: {
           model: 'cars',
+          key: 'id'
+        }
+      },
+      ownerId: {
+        type: Sequelize.INTEGER,
+        references: {
+          model: 'users',
           key: 'id'
         }
       },
@@ -22,14 +36,20 @@ module.exports = {
           key: 'id'
         }
       },
-      start: {
-        type: Sequelize.DATE
+      startDate: {
+        type: Sequelize.DATEONLY
       },
-      end: {
-        type: Sequelize.DATE
+      endDate: {
+        type: Sequelize.DATEONLY
+      },
+      startTime: {
+        type: Sequelize.TIME
+      },
+      endTime: {
+        type: Sequelize.TIME
       },
       pricePerHalfHour: {
-        type: Sequelize.NUMERIC
+        type: Sequelize.DECIMAL(9,2)
       },
       createdAt: {
         allowNull: false,

@@ -7,7 +7,8 @@ module.exports = {
     var router = express.Router();
 
     router.get('/', Redirect.ifNotLoggedIn(), this.index);
-    router.post('/', Redirect.ifNotLoggedIn(), this.displaySpots);
+    router.get('/available-spaces', Redirect.ifNotLoggedIn(), Redirect.ifLoggedIn('/drivers'), this.displaySpots);
+    router.post('/available-spaces', Redirect.ifNotLoggedIn(), this.displaySpots);
 
     return router;
   },
@@ -24,13 +25,13 @@ module.exports = {
             point[1], point[0], req.user.id, 0.5
           ).then((spaces) => {
             if (spaces.length > 0) {
-              res.send(spaces);
+              res.render('drivers/available-spaces', { spaces });
             } else {
               req.flash('error', 'No spaces found.');
               res.render('drivers', { error: req.flash('error') });
             }
           }).catch(() => {
-            res.render('drivers');
+            res.redirect('/drivers');
           });
         } else {
           req.flash('error', 'Destination not found.');
@@ -42,13 +43,13 @@ module.exports = {
         req.body.latitude, req.body.longitude, req.user.id, 0.5
       ).then((spaces) => {
         if (spaces.length > 0) {
-          res.send(spaces);
+          res.render('drivers/available-spaces', { spaces });
         } else {
           req.flash('error', 'No spaces found.');
           res.render('drivers', { error: req.flash('error') });
         }
       }).catch(() => {
-        res.render('drivers');
+        res.redirect('/drivers');
       });
     }
   },
