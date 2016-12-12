@@ -36,6 +36,9 @@ module.exports = {
           key: 'id'
         }
       },
+      address: {
+        type: Sequelize.STRING
+      },
       startDate: {
         type: Sequelize.DATEONLY
       },

@@ -12,6 +12,9 @@ module.exports = function(sequelize, DataTypes) {
     spaceId: {
       type: DataTypes.INTEGER,
     },
+    address: {
+      type: DataTypes.STRING,
+    },
     startDate: {
       type: DataTypes.DATEONLY,
     },

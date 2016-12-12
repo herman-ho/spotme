@@ -17,22 +17,22 @@ module.exports = {
     return router;
   },
   index(req, res) {
-    res.render('drivers');
+    res.render('drivers', { error: req.flash('error') });
   },
   displaySpots(req, res) {
     if ((!req.body.latitude || !req.body.longitude) && req.body.destination) {
       locationUtils.geocode(
         req.body.destination
       ).then((point) => {
-        if (point.length > 1) {
+        if (typeof point != 'undefined' && point.length > 1) {
           locationUtils.getInRadius(
             point[1], point[0], req.user.id, 0.5
           ).then((spaces) => {
-            if (spaces.length > 0) {
+            if (typeof spaces != 'undefined' && spaces.length > 0) {
               res.render('drivers/available-spaces', { spaces });
             } else {
               req.flash('error', 'No spaces found.');
-              res.render('drivers', { error: req.flash('error') });
+              res.redirect('/drivers');
             }
           }).catch(() => {
             res.redirect('/drivers');
@@ -46,11 +46,11 @@ module.exports = {
       locationUtils.getInRadius(
         req.body.latitude, req.body.longitude, req.user.id, 0.5
       ).then((spaces) => {
-        if (spaces.length > 0) {
+        if (typeof spaces != 'undefined' && spaces.length > 0) {
           res.render('drivers/available-spaces', { spaces });
         } else {
           req.flash('error', 'No spaces found.');
-          res.render('drivers', { error: req.flash('error') });
+          res.redirect('/drivers');
         }
       }).catch(() => {
         res.redirect('/drivers');
@@ -77,13 +77,14 @@ module.exports = {
       carId: null,
       ownerId: req.body.ownerId,
       spaceId: req.body.spaceId,
+      address: req.body.address,
       startDate: req.body.startDate,
       endDate: req.body.endDate,
       startTime: req.body.startTime,
       endTime: req.body.endTime,
       pricePerHalfHour: req.body.pricePerHalfHour,
     }).then((reservation) => {
-      res.redirect('/drivers');
+      res.redirect('/reservations');
     }).catch(() => {
       res.redirect('/drivers');
     });
