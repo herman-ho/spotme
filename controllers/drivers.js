@@ -21,7 +21,7 @@ module.exports = {
       ).then((point) => {
         if (point.length > 1) {
           locationUtils.getInRadius(
-            point[1], point[0], 0.5
+            point[1], point[0], req.user.id, 0.5
           ).then((spaces) => {
             if (spaces.length > 0) {
               res.send(spaces);
@@ -39,7 +39,7 @@ module.exports = {
       });
     } else {
       locationUtils.getInRadius(
-        req.body.latitude, req.body.longitude, 0.5
+        req.body.latitude, req.body.longitude, req.user.id, 0.5
       ).then((spaces) => {
         if (spaces.length > 0) {
           res.send(spaces);

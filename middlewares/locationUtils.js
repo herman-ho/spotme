@@ -20,11 +20,11 @@ locationUtils.geocode = (addr) =>
       console.log(err);
     });
 
-locationUtils.getInRadius = (lat, long, radius) =>
+locationUtils.getInRadius = (lat, long, user, radius) =>
   sequelize
     .query(
-      'select * from public.spaces where st_dwithin(st_setsrid(st_makepoint(:long,:lat),4326)::geography,"coordinatePoint",:radius*1609)',
-      { replacements: {lat: lat, long: long, radius: radius}, model: models.space }
+      'select * from public.spaces where "userId" != :user and st_dwithin(st_setsrid(st_makepoint(:long,:lat),4326)::geography,"coordinatePoint",:radius*1609)',
+      { replacements: {lat: lat, long: long, user: user, radius: radius}, model: models.space }
     )
     .then((spaces) => {
       return spaces;
