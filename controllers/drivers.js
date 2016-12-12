@@ -10,8 +10,9 @@ module.exports = {
     router.get('/', Redirect.ifNotLoggedIn(), this.index);
     router.get('/available-spaces', Redirect.ifNotLoggedIn(), Redirect.ifLoggedIn('/drivers'));
     router.post('/available-spaces', Redirect.ifNotLoggedIn(), this.displaySpots);
-    router.get('/available-spaces/reserve', Redirect.ifNotLoggedIn(), Redirect.ifLoggedIn('/drivers'));
-    router.post('/available-spaces/reserve', Redirect.ifNotLoggedIn(), this.reserve);
+    router.get('/available-spaces/:id/confirm-reservation', Redirect.ifNotLoggedIn(), this.confirm);
+    router.get('/reserve', Redirect.ifNotLoggedIn(), Redirect.ifLoggedIn('/drivers'));
+    router.post('/reserve', Redirect.ifNotLoggedIn(), this.reserve);
 
     return router;
   },
@@ -56,7 +57,21 @@ module.exports = {
       });
     }
   },
+  confirm(req, res) {
+    models.space.findOne({
+      where: {
+        userId: {
+          $ne: req.user.id,
+        },
+        id: req.params.id,
+      },
+    }).then((space) => {
+      res.render('drivers/confirm-reservation', { space });
+    }).catch(() => {
+      res.redirect('/drivers');
+    });
+  },
   reserve(req, res) {
-    res.send("hello");
+
   },
 };

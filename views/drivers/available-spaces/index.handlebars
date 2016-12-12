@@ -10,19 +10,12 @@
 <div class="container">
   <div class="row">
     <div class="col-xs-12 col-sm-6 col-lg-8">
-      <form action="/drivers/available-spaces/reserve" method="POST">
-        <label>Space ID</label>
-        <input type="text" name="spaceId" class="form-control" value="{{this.id}}" disabled>
-        <label>Address</label>
-        <input type="text" name="address" class="form-control form-control-sm" value="{{this.address1}} {{this.address2}} {{this.city}}, {{this.state}} {{this.zip}}" disabled>
-        <label>Price (USD per half hour)</label>
-        <input type="number" name="pricePerHalfHour" class="form-control" value="{{this.pricePerHalfHour}}" disabled>
-        <label>Special Instructions</label>
-        <input type="text" name="instructions" class="form-control" value="{{this.instructions}}" disabled>
-        <div class="form-group col-xs-4 col-xs-offset-4">
-          <button class="btn btn-lg btn-success btn-block btn-submit" type="submit">Reserve</button>
-        </div>
-      </form>
+      <h4>Listing ID: {{this.id}}</h4>
+      <a href="/drivers/available-spaces/{{this.id}}/confirm-reservation">
+        <h4>{{this.address1}} {{this.address2}} {{this.city}}, {{this.state}} {{this.zip}}</h4>
+        <h5>Price per half hour: ${{this.pricePerHalfHour}}</h5>
+        <h5>Special Instructions: {{this.instructions}}</h5>
+      </a>
     </div>
     <div class="col-xs-6 col-lg-4 text-right">
       <img src="https://maps.googleapis.com/maps/api/streetview?&size=200x200&location={{this.address1}},%20{{this.city}},%20{{this.state}},%20{{this.zip}}&key={{> api-key-streetview}}" />
