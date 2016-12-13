@@ -84,7 +84,7 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          userId: 1,
+          userId: 2,
           address1: "341 West 36th Street",
           address2: null,
           city: "New York",
@@ -100,7 +100,7 @@ module.exports = {
           updatedAt: new Date()
         },
         {
-          userId: 1,
+          userId: 2,
           address1: "311 West 34th Street",
           address2: null,
           city: "New York",
