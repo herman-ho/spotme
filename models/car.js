@@ -1,11 +1,26 @@
 'use strict';
 module.exports = function(sequelize, DataTypes) {
   var Car = sequelize.define('car', {
-    userId: DataTypes.INTEGER,
-    make: DataTypes.STRING,
-    model: DataTypes.STRING,
-    year: DataTypes.STRING,
-    license: DataTypes.STRING,
+    userId: {
+      type: DataTypes.INTEGER,
+      allowNull: false
+    },
+    make: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    model: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    year: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
+    license: {
+      type: DataTypes.STRING,
+      allowNull: false
+    },
     active: DataTypes.BOOLEAN
   }, {
     classMethods: {

@@ -5,5 +5,13 @@
     "database": "spotme",
     "host": "localhost",
     "dialect": "postgres"
+  },
+  "test": {
+    "username": "spotme",
+    "password": "spotme",
+    "database": "spotme_test",
+    "host": "localhost",
+    "dialect": "postgres",
+    "logging": false
   }
 }

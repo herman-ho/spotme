@@ -2,10 +2,14 @@
   "name": "spotme",
   "version": "1.0.0",
   "description": "Parking for the 21st century",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/herman-ho/spotme.git"
+  },
   "main": "app.js",
   "scripts": {
     "start": "node_modules/.bin/nodemon -L app.js",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "NODE_ENV=test node_modules/mocha/bin/mocha --recursive tests/"
   },
   "author": "Herman Ho <contact.hermanho@gmail.com>",
   "contributors": [
@@ -22,8 +26,6 @@
   "dependencies": {
     "bcrypt-nodejs": "0.0.3",
     "body-parser": "^1.15.2",
-    "chai": "^3.5.0",
-    "chai-http": "^3.0.0",
     "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.3",
     "express": "^4.14.0",
@@ -31,7 +33,6 @@
     "express-session": "^1.14.1",
     "method-override": "^2.3.6",
     "minimatch": "^3.0.3",
-    "mocha": "^3.1.0",
     "node-geocoder": "^3.15.1",
     "nodemon": "^1.10.2",
     "passport": "^0.3.2",
@@ -39,5 +40,10 @@
     "pg": "^6.1.0",
     "sequelize": "^3.27.0",
     "sequelize-cli": "^2.4.0"
+  },
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "chai-http": "^3.0.0",
+    "mocha": "^3.2.0"
   }
 }
