@@ -23,6 +23,10 @@ unused parking spaces.
 
 ### Running the application
 
+System prerequisites:
+ - Two PostgreSQL databases: `spotme` and `spotme_test`.
+ - PostGIS extension added to both instances.
+
 1) Clone the repository
 ```bash
 git clone https://github.com/herman-ho/spotme.git
@@ -38,16 +42,21 @@ cd spotme
 npm install
 ```
 
-4) Run database migrations (optional: seeds)
+4) Run mocha tests
+```bash
+npm test
+```
+
+5) Run database migrations (optional: seeds)
 ```bash
 sequelize db:migrate && sequelize db:seed:all
 ```
 
-5) Place Google Maps Streetview API key in handlebars partial
+6) Place Google Maps Streetview API key in handlebars partial
 
 `views/partials/api-key-streetview.handlebars`
 
-6) Run application, listening on `localhost:8000`
+7) Run application, listening on `localhost:8000`
 ```bash
 npm start
 ```
